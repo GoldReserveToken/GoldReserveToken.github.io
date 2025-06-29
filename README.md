@@ -1,56 +1,1298 @@
-# Gold Reserve Token ($GOLDR)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Reserve Token ($GOLDR) - Digital Gold Reinvented</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --deep-blue: #0A0F1F;
+            --light-gold: #F5E7C1;
+            --medium-gold: #E6C35C;
+            --warning-red: #ff4444;
+            --warning-dark: #cc0000;
+            --caution-yellow: #ffcc00;
+            --caution-dark: #e6b800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--deep-blue);
+            color: white;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.1) 0%, rgba(10, 15, 31, 0) 20%),
+                              radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.1) 0%, rgba(10, 15, 31, 0) 20%);
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/0j7WwYk/404-token.gif') center/cover no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        /* SECURITY WARNING BANNER */
+        .scam-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, var(--warning-red), var(--warning-dark));
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: 700;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .scam-warning .container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .scam-warning i {
+            font-size: 24px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .close-warning {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* RISK INDICATORS */
+        .risk-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        
+        .high-risk {
+            background: rgba(255, 68, 68, 0.3);
+            border: 1px solid var(--warning-red);
+        }
+        
+        .medium-risk {
+            background: rgba(255, 204, 0, 0.3);
+            border: 1px solid var(--caution-yellow);
+        }
+        
+        /* CONTRACT VERIFICATION */
+        .contract-verification {
+            background: rgba(10, 15, 31, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        
+        .verification-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .verification-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(255, 68, 68, 0.2);
+            color: var(--warning-red);
+        }
+        
+        .verification-status.verified {
+            background: rgba(0, 200, 0, 0.2);
+            color: #00cc00;
+        }
+        
+        .audit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--gold);
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        
+        .gold-text {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(10, 15, 31, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            top: 50px; /* Account for warning banner */
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--deep-blue);
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--deep-blue);
+            border: none;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .btn-caution {
+            border: 2px solid var(--caution-yellow);
+            color: var(--caution-yellow);
+            background: transparent;
+        }
+        
+        .btn-caution:hover {
+            background: rgba(255, 204, 0, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 150px; /* Adjusted for header + warning */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .gold-bar {
+            width: 300px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transform: rotate(-10deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .gold-bar::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .gold-bar-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--deep-blue);
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .gold-bar-small {
+            position: absolute;
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--medium-gold), var(--dark-gold));
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .gold-bar-1 {
+            top: -30px;
+            left: 50px;
+            transform: rotate(15deg);
+        }
+        
+        .gold-bar-2 {
+            bottom: -30px;
+            right: 50px;
+            transform: rotate(-15deg);
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: var(--light-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 70px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 600px;
+            color: #c0c0d0;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contract-address {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .contract-address i {
+            color: var(--gold);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--light-gold);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        
+        .risk-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            background: var(--warning-red);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 30px;
+            color: var(--gold);
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .feature-description {
+            color: #b0b0c0;
+            line-height: 1.7;
+        }
+        
+        /* Tokenomics Section */
+        .tokenomics {
+            padding: 120px 0;
+            background: rgba(10, 15, 25, 0.7);
+        }
+        
+        .tokenomics-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .tokenomics-chart {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .chart-container {
+            width: 350px;
+            height: 350px;
+            position: relative;
+        }
+        
+        .chart-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .chart-center-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        
+        .chart-center-label {
+            color: var(--light-gold);
+            font-size: 18px;
+        }
+        
+        .tokenomics-details {
+            flex: 1;
+        }
+        
+        .tokenomics-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tokenomics-item {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .tokenomics-icon {
+            min-width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--gold);
+        }
+        
+        .tokenomics-info h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .tokenomics-info p {
+            color: #b0b0c0;
+        }
+        
+        /* Roadmap Section */
+        .roadmap {
+            padding: 120px 0;
+        }
+        
+        .roadmap-steps {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+        
+        .roadmap-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+        
+        .roadmap-step {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .roadmap-step:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+        
+        .step-content {
+            flex: 1;
+            padding: 30px;
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .step-content ul {
+            padding-left: 20px;
+            margin-top: 15px;
+            color: #b0b0c0;
+        }
+        
+        .step-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .step-marker {
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            box-shadow: 0 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(10, 15, 31, 0.8));
+        }
+        
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--light-gold);
+        }
+        
+        /* Security Tips */
+        .security-tips {
+            padding: 80px 0;
+            background: rgba(10, 15, 31, 0.9);
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tip-card {
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .tip-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(5, 10, 20, 0.9);
+            padding: 70px 0 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--gold);
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--deep-blue);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #b0b0c0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #707080;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 50px;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin: 0 auto 40px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .tokenomics-content {
+                flex-direction: column;
+            }
+            
+            .tokenomics-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .scam-warning .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .close-warning {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .roadmap-step,
+            .roadmap-step:nth-child(odd) {
+                flex-direction: column;
+                text-align: left;
+            }
+            
+            .step-marker {
+                left: 0;
+                transform: translate(-50%, -50%);
+            }
+            
+            .step-content {
+                margin-left: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Security Warning Banner -->
+    <div class="scam-warning">
+        <div class="container">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>SECURITY WARNING:</strong> High-risk investment - Unverified gold reserves - No independent audits - 
+                This token exhibits multiple characteristics of potential scams. 
+                <span class="risk-indicator high-risk">HIGH RISK</span>
+            </div>
+            <button class="close-warning">&times;</button>
+        </div>
+    </div>
 
-![Banner](https://i.ibb.co/5KbWwQm/gold-reserve-banner.png)
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">GR</div>
+                <div class="logo-text gold-text">GOLD RESERVE</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tokenomics">Tokenomics</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#security">Security</a></li>
+                </ul>
+            </nav>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-caution"><i class="fas fa-exclamation-circle"></i> High Risk</a>
+                <a href="#" class="btn btn-outline">Whitepaper</a>
+            </div>
+        </div>
+    </header>
 
-**The revolutionary token backed by physical gold reserves** exposing fiat gold manipulation through blockchain technology.
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="tagline">The Future of Digital Gold <span class="risk-indicator high-risk">HIGH RISK</span></div>
+                    <h1>Exposing Fiat Gold Manipulation with <span class="gold-text">Blockchain</span></h1>
+                    <p>$GOLDR combines the stability of physical gold with the innovation of cryptocurrency. Each token is backed by verifiable gold reserves stored in audited vaults worldwide. <span class="risk-indicator medium-risk">UNVERIFIED CLAIM</span></p>
+                    
+                    <div class="contract-verification">
+                        <div class="verification-header">
+                            <i class="fas fa-file-contract"></i>
+                            <h3>Contract Address</h3>
+                            <span class="verification-status">UNVERIFIED</span>
+                        </div>
+                        <div class="contract-address">
+                            <i class="fas fa-wallet"></i> 0x7272cE8C293af0da82b3Cb590a11fd099E2d7b14
+                        </div>
+                        <a href="#" class="audit-link">
+                            <i class="fas fa-search"></i> Verify on Etherscan
+                        </a>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-caution"><i class="fas fa-coins"></i> High Risk Investment</a>
+                        <a href="#" class="btn btn-outline"><i class="fas fa-file-alt"></i> View Audit Reports</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="gold-bar">
+                        <div class="gold-bar-text">GOLD RESERVE</div>
+                        <div class="gold-bar-text">1 $GOLDR = 1 GRAM GOLD <span class="risk-indicator medium-risk">UNVERIFIED</span></div>
+                    </div>
+                    <div class="gold-bar-small gold-bar-1"></div>
+                    <div class="gold-bar-small gold-bar-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-## 🌐 Live Website
-[https://GoldReserveToken.github.io](https://GoldReserveToken.github.io)
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gold-text">Revolutionary Features</h2>
+                <p class="section-subtitle">$GOLDR is designed to disrupt traditional gold markets while providing unprecedented transparency and security. <span class="risk-indicator medium-risk">UNVERIFIED CLAIMS</span></p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="risk-tag high-risk">UNVERIFIED</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Physical Gold Backing</h3>
+                    <p class="feature-description">Each $GOLDR token represents 1 gram of physical gold stored in high-security vaults with regular audits. <span class="risk-indicator medium-risk">NO PROOF PROVIDED</span></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="feature-title">Global Redemption</h3>
+                    <p class="feature-description">Redeem your tokens for physical gold bars at any of our partner vault locations worldwide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="risk-tag high-risk">UNVERIFIED</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="feature-title">Transparent Reserves</h3>
+                    <p class="feature-description">Real-time dashboard showing all gold reserves, serial numbers, and audit reports on-chain. <span class="risk-indicator medium-risk">NOT IMPLEMENTED</span></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">Gold Market Game</h3>
+                    <p class="feature-description">Predict COMEX gold prices and win $GOLDR airdrops in our interactive trading game.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="feature-title">Burn Mechanism</h3>
+                    <p class="feature-description">5% of transaction fees buy and burn physical gold, creating permanent scarcity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="risk-tag high-risk">HIGH RISK</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3 class="feature-title">Legal Action Fund</h3>
+                    <p class="feature-description">2% of fees fund lawsuits against gold market manipulators and demand audits. <span class="risk-indicator high-risk">POTENTIAL SCAM MECHANISM</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-## ✨ Features
-- 1:1 physical gold backing
-- Real-time reserve audits
-- COMEX manipulation tracker
-- Global redemption centers
-- Gold market prediction game
+    <!-- Tokenomics Section -->
+    <section class="tokenomics" id="tokenomics">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gold-text">Tokenomics <span class="risk-indicator high-risk">HIGH SELL TAX</span></h2>
+                <p class="section-subtitle">Sustainable economic model designed for long-term value appreciation</p>
+            </div>
+            <div class="tokenomics-content">
+                <div class="tokenomics-chart">
+                    <div class="chart-container">
+                        <canvas id="tokenomicsChart" width="350" height="350"></canvas>
+                        <div class="chart-center">
+                            <div class="chart-center-value">1B</div>
+                            <div class="chart-center-label">Total Supply</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tokenomics-details">
+                    <p>$GOLDR implements a sophisticated token economy that balances growth incentives with gold reserve accumulation. Our tax structure fuels both the treasury and the burn mechanism. <span class="risk-indicator high-risk">7% SELL TAX</span></p>
+                    <div class="tokenomics-list">
+                        <div class="tokenomics-item">
+                            <div class="tokenomics-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="tokenomics-info">
+                                <h4>Total Supply</h4>
+                                <p>1,000,000,000 $GOLDR <span class="risk-indicator medium-risk">HIGH INFLATION</span></p>
+                            </div>
+                        </div>
+                        <div class="tokenomics-item">
+                            <div class="tokenomics-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="tokenomics-info">
+                                <h4>Buy Tax</h4>
+                                <p>0% - maximize entry</p>
+                            </div>
+                        </div>
+                        <div class="tokenomics-item">
+                            <div class="tokenomics-icon">
+                                <i class="fas fa-fire-alt"></i>
+                            </div>
+                            <div class="tokenomics-info">
+                                <h4>Sell Tax</h4>
+                                <p>7% (5% gold reserve, 2% burn) <span class="risk-indicator high-risk">EXIT BARRIER</span></p>
+                            </div>
+                        </div>
+                        <div class="tokenomics-item">
+                            <div class="risk-tag high-risk">UNVERIFIED</div>
+                            <div class="tokenomics-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="tokenomics-info">
+                                <h4>Liquidity Lock</h4>
+                                <p>20 years (Fort Knox lock) <span class="risk-indicator high-risk">UNVERIFIABLE CLAIM</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-## ⚙️ Technology Stack
-- HTML5/CSS3
-- Chart.js
-- IPFS (decentralized storage)
-- ENS (Web3 domain)
+    <!-- Security Tips Section -->
+    <section class="security-tips" id="security">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gold-text">Security Recommendations</h2>
+                <p class="section-subtitle">Essential precautions for cryptocurrency investors</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><i class="fas fa-search"></i> Verify Contract</h3>
+                    <p>Always verify the smart contract on blockchain explorers. Check for renounced ownership, audits, and liquidity locks.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-file-invoice"></i> Demand Audits</h3>
+                    <p>Require proof of gold reserves from independent auditors. Be skeptical of unaudited projects claiming asset backing.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Recognize Red Flags</h3>
+                    <p>High sell taxes, unrealistic returns, anonymous teams, and aggressive marketing are common scam indicators.</p>
+                </div>
+                <div class="tip-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Invest Responsibly</h3>
+                    <p>Never invest more than you can afford to lose. Consider gold-backed tokens from established, regulated providers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-## 📜 License
-MIT Licensed - See [LICENSE](LICENSE)
-# Exclude system files
-.DS_Store
-Thumbs.db
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gold-text">Strategic Roadmap <span class="risk-indicator medium-risk">AMBITIOUS CLAIMS</span></h2>
+                <p class="section-subtitle">Our phased approach to revolutionizing the gold market</p>
+            </div>
+            <div class="roadmap-steps">
+                <div class="roadmap-line"></div>
+                
+                <div class="roadmap-step">
+                    <div class="step-content">
+                        <h3>Phase 1: Foundation (Q3 2025)</h3>
+                        <ul>
+                            <li>Token deployment on Base L2</li>
+                            <li>First 100kg gold purchase & vault storage <span class="risk-indicator medium-risk">UNVERIFIED</span></li>
+                            <li>Gold reserve dashboard launch</li>
+                            <li>Community airdrop to gold bug communities</li>
+                        </ul>
+                    </div>
+                    <div class="step-marker"></div>
+                </div>
+                
+                <div class="roadmap-step">
+                    <div class="step-content">
+                        <h3>Phase 2: Expansion (Q4 2025)</h3>
+                        <ul>
+                            <li>CEX listings (3 exchanges)</li>
+                            <li>Physical redemption at 5 global locations</li>
+                            <li>Gold Market Prediction Game launch</li>
+                            <li>Strategic lawsuit against COMEX <span class="risk-indicator high-risk">UNLIKELY</span></li>
+                        </ul>
+                    </div>
+                    <div class="step-marker"></div>
+                </div>
+                
+                <div class="roadmap-step">
+                    <div class="step-content">
+                        <h3>Phase 3: Dominance (Q1 2026)</h3>
+                        <ul>
+                            <li>10,000kg gold reserves milestone <span class="risk-indicator high-risk">$650M VALUE</span></li>
+                            <li>Gold-backed NFT collection launch</li>
+                            <li>Partnership with major gold refiners</li>
+                            <li>Global marketing campaign launch</li>
+                        </ul>
+                    </div>
+                    <div class="step-marker"></div>
+                </div>
+                
+                <div class="roadmap-step">
+                    <div class="step-content">
+                        <h3>Phase 4: Revolution (Q2 2026)</h3>
+                        <ul>
+                            <li>Gold Reserve debit card launch</li>
+                            <li>Tokenize national gold reserves <span class="risk-indicator high-risk">UNREALISTIC</span></li>
+                            <li>Become top 100 cryptocurrency</li>
+                            <li>Complete decentralization of protocol</li>
+                        </ul>
+                    </div>
+                    <div class="step-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-# Exclude build artifacts
-/node_modules
-/build
+    <!-- CTA Section -->
+    <section class="cta" id="reserves">
+        <div class="container">
+            <h2>Join the Gold Revolution <span class="risk-indicator medium-risk">CAUTION ADVISED</span></h2>
+            <p>Be part of the movement that's exposing gold market manipulation while creating real, asset-backed wealth.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-caution"><i class="fas fa-exclamation-circle"></i> High Risk Investment</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-vault"></i> View Gold Reserves</a>
+            </div>
+        </div>
+    </section>
 
-# Exclude environment files
-.env
-*.env
-MIT License
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">GR</div>
+                        <div class="logo-text gold-text">GOLD RESERVE</div>
+                    </div>
+                    <p>The token that exposes fiat gold manipulation while backing itself with REAL physical gold reserves. <span class="risk-indicator medium-risk">UNVERIFIED CLAIM</span></p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Audit Reports <span class="risk-indicator high-risk">MISSING</span></a></li>
+                        <li><a href="#">Gold Reserves</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Ecosystem</h3>
+                    <ul>
+                        <li><a href="#">Buy $GOLDR</a></li>
+                        <li><a href="#">Staking <span class="risk-indicator medium-risk">COMING SOON</span></a></li>
+                        <li><a href="#">Gold Game</a></li>
+                        <li><a href="#">NFT Collection</a></li>
+                        <li><a href="#">Redemption</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Compliance <span class="risk-indicator high-risk">NO LICENSE</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Gold Reserve Token. All rights reserved. $GOLDR is a decentralized digital asset. Not an investment product. <span class="risk-indicator high-risk">HIGH-RISK INVESTMENT</span>
+            </div>
+        </div>
+    </footer>
 
-Copyright (c) 2025 Gold Reserve Token Team
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Tokenomics Chart
+        const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+        const tokenomicsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Gold Reserve', 'Liquidity', 'Marketing', 'Team', 'Burned'],
+                datasets: [{
+                    data: [50, 30, 10, 5, 5],
+                    backgroundColor: [
+                        '#D4AF37',
+                        '#B8860B',
+                        '#E6C35C',
+                        '#F5E7C1',
+                        '#0A0F1F'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#fff',
+                            font: {
+                                size: 14,
+                                family: "'Montserrat', sans-serif"
+                            },
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.parsed}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.feature-card, .roadmap-step').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Close warning banner
+            document.querySelector('.close-warning').addEventListener('click', function() {
+                document.querySelector('.scam-warning').remove();
+                document.querySelector('header').style.top = '0';
+            });
+        });
+    </script>
+</body>
+</html>
