@@ -3,1336 +3,1380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gold Reserve Token ($GOLDR) - Presale</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥇</text></svg>">
+    <title>Gold Reserve Token | Affordable Gold-Backed Cryptocurrency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef9e7',
+                            100: '#fdf2d0',
+                            200: '#fbe5a1',
+                            300: '#f9d872',
+                            400: '#f7cb43',
+                            500: '#f5be14',
+                            600: '#c49810',
+                            700: '#93720c',
+                            800: '#624c08',
+                            900: '#312604',
+                        },
+                        secondary: {
+                            50: '#f3f4f6',
+                            100: '#e5e7eb',
+                            200: '#d1d5db',
+                            300: '#9ca3af',
+                            400: '#6b7280',
+                            500: '#4b5563',
+                            600: '#374151',
+                            700: '#1f2937',
+                            800: '#111827',
+                            900: '#0a0e17',
+                        }
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary: #D4AF37;
-            --primary-dark: #B8860B;
-            --primary-light: #FFDF6B;
-            --secondary: #1a1a2e;
-            --light: #f8f9fa;
-            --dark: #121212;
-            --gray: #6c757d;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
-            --glow: 0 0 15px rgba(212, 175, 55, 0.5);
+        /* Existing styles... */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-            background-attachment: fixed;
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+        .animate-delay-1 { animation-delay: 0.2s; }
+        .animate-delay-2 { animation-delay: 0.4s; }
+        .animate-delay-3 { animation-delay: 0.6s; }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
         }
-
-        /* Header Styles */
-        header {
-            padding: 1.5rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
         }
-
-        header.scrolled {
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(245, 190, 20, 0.25);
         }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a0e17 0%, #1f2937 100%);
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
+        .gold-gradient {
+            background: linear-gradient(135deg, #f5be14 0%, #c49810 100%);
         }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--secondary);
-            box-shadow: var(--glow);
-            transition: var(--transition);
-        }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        .gold-text {
+            background: linear-gradient(135deg, #f5be14 0%, #c49810 100%);
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .connect-wallet-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--secondary);
-            border: none;
-            padding: 0.8rem 1.8rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .connect-wallet-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
-        }
-
-        .wallet-connected {
-            background: var(--success);
-            pointer-events: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            animation: rotate 120s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-            display: block;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8); }
-            100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1.5rem;
-            min-width: 100px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: var(--glow);
-            transition: var(--transition);
-        }
-
-        .countdown-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-        }
-
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Presale Section */
-        .presale-section {
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem auto;
-            max-width: 800px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .presale-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
-        .presale-box {
-            background: rgba(18, 18, 18, 0.6);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .presale-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1.2rem;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: var(--transition);
-        }
-
-        .info-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
-        }
-
-        .info-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0.5rem;
-        }
-
-        .info-value {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .progress-container {
-            margin: 2rem 0;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
         .progress-bar {
-            height: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: #374151;
             overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
         }
-
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            width: 65%;
-            border-radius: 10px;
-            position: relative;
+            background: linear-gradient(to right, #f5be14, #c49810);
+            transition: width 1s ease-in-out;
         }
-
-        .progress-fill::after {
-            content: '';
+        .faq-item {
+            border-bottom: 1px solid #374151;
+        }
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #f5be14;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        .affordable-badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: shine 2s infinite;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: #0a0e17;
+            font-weight: 700;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transform: rotate(5deg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 10;
         }
-
-        @keyframes shine {
-            0% { background-position: -200px 0; }
-            100% { background-position: 200px 0; }
-        }
-
-        .buy-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .input-group label {
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .input-row input {
-            flex: 1;
-        }
-
-        input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+        .value-box {
+            background: rgba(245, 190, 20, 0.1);
+            border: 1px solid rgba(245, 190, 20, 0.3);
             border-radius: 10px;
-            padding: 1rem;
-            font-size: 1rem;
-            color: white;
-            transition: var(--transition);
+            padding: 15px;
+            margin: 15px 0;
         }
-
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        .security-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: rgba(22, 163, 74, 0.2);
+            border: 1px solid rgba(22, 163, 74, 0.5);
+            border-radius: 20px;
+            margin: 5px;
         }
-
-        .max-btn {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--primary);
-            border: none;
-            border-radius: 10px;
-            padding: 0 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
+        .token-countdown {
             display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .max-btn:hover {
-            background: rgba(212, 175, 55, 0.3);
-        }
-
-        .buy-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--secondary);
-            border: none;
-            padding: 1.2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            margin-top: 1rem;
-            display: flex;
-            align-items: center;
             justify-content: center;
             gap: 10px;
+            margin-top: 20px;
         }
-
-        .buy-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
-        }
-
-        .buy-btn:active {
-            transform: translateY(1px);
-        }
-
-        .transaction-status {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 10px;
+        .countdown-box {
+            background: rgba(245, 190, 20, 0.1);
+            border: 1px solid rgba(245, 190, 20, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            min-width: 70px;
             text-align: center;
-            display: none;
         }
-
-        .transaction-success {
-            background: rgba(40, 167, 69, 0.2);
-            border: 1px solid var(--success);
-            color: var(--success);
+        .countdown-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f5be14;
         }
-
-        .transaction-error {
-            background: rgba(220, 53, 69, 0.2);
-            border: 1px solid var(--danger);
-            color: var(--danger);
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            opacity: 0.8;
         }
-
-        /* Tokenomics Section */
-        .tokenomics {
-            padding: 5rem 0;
+        .team-member {
+            transition: all 0.3s ease;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        .vault-location {
             position: relative;
+            overflow: hidden;
+            border-radius: 12px;
         }
-
-        .tokenomics::before {
+        .vault-location::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="1" fill="rgba(212, 175, 55, 0.1)"/></svg>');
-            z-index: -1;
-            opacity: 0.3;
+            background: linear-gradient(to bottom, rgba(10, 14, 23, 0.7), rgba(10, 14, 23, 0.9));
+            z-index: 1;
         }
-
-        .tokenomics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .tokenomics-card {
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
+        .vault-content {
             position: relative;
-            overflow: hidden;
+            z-index: 2;
         }
-
-        .tokenomics-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
+        .presale-timer {
+            background: rgba(31, 41, 55, 0.7);
+            border: 2px solid rgba(245, 190, 20, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
         }
-
-        .tokenomics-card::before {
+        .wallet-connected {
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+        }
+        .affordable-highlight {
+            position: relative;
+            display: inline-block;
+        }
+        .affordable-highlight::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(34, 197, 94, 0.3);
             z-index: -1;
+            border-radius: 4px;
         }
-
-        .tokenomics-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .tokenomics-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .tokenomics-card p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Token Contract Section */
-        .contract-section {
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 5rem auto;
-            max-width: 800px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: var(--shadow);
+        .affordable-banner {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: #111827;
+            padding: 10px 0;
+            text-align: center;
+            font-weight: 600;
             position: relative;
             overflow: hidden;
         }
-        
-        .contract-section::before {
+        .affordable-banner::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
         }
-        
-        .contract-details {
-            background: rgba(18, 18, 18, 0.6);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .contract-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .contract-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .action-btn {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 0.8rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .action-btn:hover {
-            background: rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(18, 18, 18, 0.9);
-            padding: 4rem 0 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        .affordable-card {
+            border: 2px solid #22c55e;
             position: relative;
+            overflow: hidden;
         }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-col h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-col h3::after {
-            content: '';
+        .affordable-card::after {
+            content: 'AFFORDABLE';
             position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--primary);
+            top: 15px;
+            right: -35px;
+            background: #22c55e;
+            color: #111827;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 40px;
+            transform: rotate(45deg);
         }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+        .value-badge {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #111827;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px 0;
         }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        .back-to-top {
+        
+        /* New styles for token display */
+        .token-balance {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(31, 41, 55, 0.9);
+            border: 2px solid #f5be14;
+            border-radius: 12px;
+            padding: 15px;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+        .token-balance-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .token-balance-icon {
+            background: #f5be14;
+            color: #111827;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: var(--primary);
-            color: var(--secondary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow);
+            font-size: 18px;
+        }
+        .token-balance-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f5be14;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .token-balance-label {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .close-balance {
+            position: absolute;
+            top: 5px;
+            right: 10px;
             cursor: pointer;
-            transition: var(--transition);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0.7;
         }
-
-        .back-to-top.visible {
+        .close-balance:hover {
             opacity: 1;
-            visibility: visible;
         }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        
+        /* Purchase modal */
+        .purchase-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 23, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
         }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .presale-info, .contract-info {
-                grid-template-columns: 1fr;
-            }
+        .purchase-modal.active {
+            opacity: 1;
+            pointer-events: all;
         }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .countdown {
-                gap: 1rem;
-            }
-            
-            .countdown-item {
-                min-width: 80px;
-                padding: 1rem;
-            }
-            
-            .countdown-number {
-                font-size: 2rem;
-            }
-            
-            .presale-section, .contract-section {
-                padding: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
+        .modal-content {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid #374151;
+            box-shadow: 0 25px 50px -12px rgba(245, 190, 20, 0.25);
         }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .countdown {
-                flex-wrap: wrap;
-            }
-            
-            .countdown-item {
-                min-width: 70px;
-            }
-            
-            .input-row {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-            }
-            
-            .connect-wallet-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .modal-icon {
+            background: #f5be14;
+            color: #111827;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            opacity: 0.7;
+            font-size: 20px;
+        }
+        .modal-close:hover {
+            opacity: 1;
+        }
+        .modal-details {
+            background: rgba(245, 190, 20, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .modal-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(245, 190, 20, 0.2);
+        }
+        .modal-detail:last-child {
+            border-bottom: none;
+        }
+        .modal-button {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            background: #f5be14;
+            color: #111827;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        .modal-button:hover {
+            background: #c49810;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(196, 152, 16, 0.4);
+        }
+        .modal-button:disabled {
+            background: #374151;
+            color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
     </style>
 </head>
-<body>
-    <!-- Back to top button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
+<body class="gradient-bg text-gray-100 font-body smooth-scroll">
+    <!-- Affordable Banner -->
+    <div class="affordable-banner animate-pulse">
+        <div class="container mx-auto px-4 relative z-10">
+            <i class="fas fa-badge-percent mr-2"></i> 
+            NEW LOWER FEES & MINIMUM INVESTMENT! 
+            <span class="font-bold ml-2">Start with just $10</span>
+        </div>
     </div>
 
     <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#home" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <div class="logo-text">$GOLDR</div>
-                </a>
-                <nav class="nav-links">
-                    <a href="#home"><i class="fas fa-home"></i> Home</a>
-                    <a href="#presale"><i class="fas fa-gem"></i> Presale</a>
-                    <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
-                    <a href="#contract"><i class="fas fa-file-contract"></i> Token</a>
-                </nav>
-                <button class="connect-wallet-btn" id="connectWalletBtn">
-                    <i class="fas fa-wallet"></i> Connect Wallet
+    <header class="bg-secondary-800 bg-opacity-90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-primary-500 p-2 rounded-full">
+                    <i class="fas fa-coins text-secondary-900 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold font-display">GOLD RESERVE TOKEN</h1>
+                    <p class="text-xs text-primary-400">Affordable Gold-Backed Cryptocurrency</p>
+                </div>
+            </div>
+            <div class="mt-3 md:mt-0 flex flex-wrap justify-center gap-3 md:gap-5">
+                <a href="#presale" class="hover:text-primary-500 transition-colors px-3 py-1 rounded hover:bg-secondary-700">Presale</a>
+                <a href="#investment" class="hover:text-primary-500 transition-colors px-3 py-1 rounded hover:bg-secondary-700">Investment</a>
+                <a href="#benefits" class="hover:text-primary-500 transition-colors px-3 py-1 rounded hover:bg-secondary-700">Benefits</a>
+                <a href="#security" class="hover:text-primary-500 transition-colors px-3 py-1 rounded hover:bg-secondary-700">Security</a>
+                <a href="#team" class="hover:text-primary-500 transition-colors px-3 py-1 rounded hover:bg-secondary-700">Team</a>
+                <a href="#faq" class="hover:text-primary-500 transition-colors px-3 py-1 rounded hover:bg-secondary-700">FAQ</a>
+            </div>
+            <div class="mt-3 md:mt-0 flex items-center gap-3">
+                <button id="connectWallet" class="gold-gradient text-secondary-900 px-5 py-2 rounded-full font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                    <i class="fas fa-wallet"></i> <span id="walletText">Connect Wallet</span>
                 </button>
             </div>
-        </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Gold Reserve Token<br><span>$GOLDR</span></h1>
-            <p>A revolutionary cryptocurrency backed by physical gold reserves, combining the stability of precious metals with the efficiency of blockchain technology.</p>
-            
-            <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">14</div>
-                    <div class="countdown-label">Days</div>
+    <section class="relative py-20 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-secondary-900 via-secondary-900/90 to-secondary-900"></div>
+            <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');"></div>
+            <div class="absolute top-10 right-10 w-40 h-40 bg-primary-500 rounded-full filter blur-3xl opacity-20"></div>
+            <div class="absolute bottom-20 left-10 w-60 h-60 bg-primary-500 rounded-full filter blur-3xl opacity-20"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div class="max-w-4xl mx-auto animate-fade-in">
+                <div class="inline-block mb-6 px-4 py-2 bg-secondary-700 rounded-full text-primary-500 animate-pulse">
+                    <i class="fas fa-bolt mr-2"></i><span>Presale Live - Limited Time Offer!</span>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">08</div>
-                    <div class="countdown-label">Hours</div>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
+                    <span class="affordable-highlight">Affordable</span> <span class="gold-text">Gold-Backed</span> Crypto
+                </h1>
+                <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+                    Now more accessible than ever! Invest in physical gold with cryptocurrency convenience. 
+                    <span class="font-bold text-primary-400">Start with just $10.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-delay-1">
+                    <a href="#presale" class="gold-gradient text-secondary-900 px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                        <i class="fas fa-gem"></i> Join Presale - From $10
+                    </a>
+                    <a href="#investment" class="border-2 border-primary-500 text-primary-500 px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-500 hover:text-secondary-900 transition-colors flex items-center justify-center gap-2">
+                        <i class="fas fa-chart-line"></i> View Investment Plans
+                    </a>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">42</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">19</div>
-                    <div class="countdown-label">Seconds</div>
+                
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                    <div class="bg-secondary-800 p-4 rounded-lg border border-secondary-700">
+                        <div class="text-2xl font-bold text-primary-500">$10</div>
+                        <div class="text-sm opacity-80">Minimum Investment</div>
+                    </div>
+                    <div class="bg-secondary-800 p-4 rounded-lg border border-secondary-700">
+                        <div class="text-2xl font-bold text-primary-500">75%↓</div>
+                        <div class="text-sm opacity-80">Lower Fees</div>
+                    </div>
+                    <div class="bg-secondary-800 p-4 rounded-lg border border-secondary-700">
+                        <div class="text-2xl font-bold text-primary-500">$5-10</div>
+                        <div class="text-sm opacity-80">Gas Fees</div>
+                    </div>
+                    <div class="bg-secondary-800 p-4 rounded-lg border border-secondary-700">
+                        <div class="text-2xl font-bold text-primary-500">24K</div>
+                        <div class="text-sm opacity-80">Pure Gold</div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="py-16 bg-secondary-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Unbeatable Value</h2>
+                <p class="max-w-2xl mx-auto opacity-80">We've made gold investment more accessible than ever</p>
+            </div>
             
-            <a href="#presale" class="connect-wallet-btn" style="text-decoration: none;">
-                <i class="fas fa-gem"></i> Participate in Presale
-            </a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-secondary-700 p-6 rounded-xl text-center card-hover animate-fade-in animate-delay-1">
+                    <div class="inline-block bg-green-500 p-4 rounded-full mb-4">
+                        <i class="fas fa-wallet text-2xl text-secondary-900"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Lower Minimum Investment</h3>
+                    <p class="opacity-80 mb-4">Start your gold portfolio with just $10 instead of $50</p>
+                    <div class="value-badge">SAVINGS: $40</div>
+                </div>
+                
+                <div class="bg-secondary-700 p-6 rounded-xl text-center card-hover animate-fade-in animate-delay-2">
+                    <div class="inline-block bg-green-500 p-4 rounded-full mb-4">
+                        <i class="fas fa-gas-pump text-2xl text-secondary-900"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Reduced Gas Fees</h3>
+                    <p class="opacity-80 mb-4">Transaction costs slashed from $15-30 to just $5-10</p>
+                    <div class="value-badge">SAVINGS: 65-75%</div>
+                </div>
+                
+                <div class="bg-secondary-700 p-6 rounded-xl text-center card-hover animate-fade-in animate-delay-3">
+                    <div class="inline-block bg-green-500 p-4 rounded-full mb-4">
+                        <i class="fas fa-percentage text-2xl text-secondary-900"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Lower Fees Overall</h3>
+                    <p class="opacity-80 mb-4">Management fees reduced by 75% across all tiers</p>
+                    <div class="value-badge">SAVINGS: 75%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Options -->
+    <section id="investment" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Affordable Investment Options</h2>
+                <p class="max-w-2xl mx-auto opacity-80">Start with just $10 and grow your gold portfolio</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Starter Tier -->
+                <div class="bg-secondary-800 p-8 rounded-xl shadow-xl card-hover affordable-card relative animate-fade-in animate-delay-1">
+                    <div class="affordable-badge">Best Value</div>
+                    <div class="text-center mb-6">
+                        <div class="inline-block bg-secondary-700 p-3 rounded-full mb-4">
+                            <i class="fas fa-gem text-primary-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Starter</h3>
+                        <div class="text-2xl font-bold text-primary-500 mb-2">$10-49</div>
+                        <p class="text-sm opacity-80">Perfect for first-time investors</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>5-24 GRT Tokens</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Basic Investor Status</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Email Updates</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Community Access</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>+5% Bonus Tokens</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-secondary-700 text-white py-3 rounded-lg hover:bg-primary-500 hover:text-secondary-900 transition-colors investment-btn" data-tier="starter">
+                        Start Investing
+                    </button>
+                </div>
+                
+                <!-- Silver Tier -->
+                <div class="bg-secondary-800 p-8 rounded-xl shadow-xl card-hover border-2 border-primary-500 relative animate-fade-in">
+                    <div class="affordable-badge">Most Popular</div>
+                    <div class="text-center mb-6">
+                        <div class="inline-block bg-secondary-700 p-3 rounded-full mb-4">
+                            <i class="fas fa-crown text-primary-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Silver Tier</h3>
+                        <div class="text-2xl font-bold text-primary-500 mb-2">$50-199</div>
+                        <p class="text-sm opacity-80">Great for building your gold portfolio</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>25-99 GRT Tokens</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Priority Support</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Early Access to Features</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Silver NFT Badge</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>+15% Bonus Tokens</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Quarterly Reports</span>
+                        </li>
+                    </ul>
+                    <button class="w-full gold-gradient text-secondary-900 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity investment-btn" data-tier="silver">
+                        Select Plan
+                    </button>
+                </div>
+                
+                <!-- Gold Tier -->
+                <div class="bg-secondary-800 p-8 rounded-xl shadow-xl card-hover relative animate-fade-in animate-delay-1">
+                    <div class="affordable-badge">VIP Benefits</div>
+                    <div class="text-center mb-6">
+                        <div class="inline-block bg-secondary-700 p-3 rounded-full mb-4">
+                            <i class="fas fa-medal text-primary-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Gold Tier</h3>
+                        <div class="text-2xl font-bold text-primary-500 mb-2">$200+</div>
+                        <p class="text-sm opacity-80">For serious gold investors</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>100+ GRT Tokens</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>VIP Support</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Gold NFT Certificate</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Governance Voting Rights</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>+30% Bonus Tokens</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Exclusive Events</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary-500"></i>
+                            <span>Physical Gold Redemption</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-secondary-700 text-white py-3 rounded-lg hover:bg-primary-500 hover:text-secondary-900 transition-colors investment-btn" data-tier="gold">
+                        Go Premium
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Presale Section -->
-    <section class="presale-section" id="presale">
-        <h2 class="section-title">Presale is Live!</h2>
-        
-        <div class="presale-box">
-            <div class="presale-info">
-                <div class="info-item">
-                    <div class="info-label">Presale Progress</div>
-                    <div class="info-value">65%</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Total Raised</div>
-                    <div class="info-value">325 ETH</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Presale Target</div>
-                    <div class="info-value">500 ETH</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Token Price</div>
-                    <div class="info-value">1 ETH = 50,000 $GOLDR</div>
-                </div>
+    <section id="presale" class="py-16 bg-secondary-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Token Presale</h2>
+                <p class="max-w-2xl mx-auto opacity-80">Join our presale with exclusive pricing and bonuses</p>
             </div>
             
-            <div class="progress-container">
-                <div class="progress-header">
-                    <span>Softcap: 250 ETH</span>
-                    <span>Hardcap: 500 ETH</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-            </div>
-            
-            <form class="buy-form" id="buyForm">
-                <div class="input-group">
-                    <label for="eth-amount">
-                        <i class="fab fa-ethereum"></i> Amount of ETH to contribute
-                    </label>
-                    <div class="input-row">
-                        <input type="number" id="eth-amount" placeholder="0.0" min="0.01" step="0.01" max="10">
-                        <button type="button" class="max-btn" id="maxBtn">MAX</button>
+            <div class="max-w-4xl mx-auto bg-secondary-700 rounded-2xl p-8 animate-fade-in animate-delay-1">
+                <div class="presale-timer">
+                    <h3 class="text-xl font-semibold mb-2">Presale Ends In:</h3>
+                    <div class="token-countdown">
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="days">07</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="hours">16</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="minutes">45</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="seconds">30</div>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="input-group">
-                    <label for="goldr-amount">
-                        <i class="fas fa-coins"></i> You will receive
-                    </label>
-                    <input type="text" id="goldr-amount" placeholder="0 $GOLDR" readonly>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-secondary-800 p-6 rounded-xl mb-6">
+                            <h3 class="text-xl font-semibold mb-4">Presale Information</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span>Token Price:</span>
+                                    <span class="font-semibold text-primary-500">$1.20 per GRT</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Presale Progress:</span>
+                                    <span class="font-semibold">72%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Tokens Sold:</span>
+                                    <span class="font-semibold">3,600,000 GRT</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Hard Cap:</span>
+                                    <span class="font-semibold">5,000,000 GRT</span>
+                                </div>
+                                <div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="presaleProgress" style="width: 72%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-secondary-800 p-6 rounded-xl">
+                            <h3 class="text-xl font-semibold mb-4">Presale Bonuses</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-secondary-700 rounded-lg">
+                                    <div>
+                                        <span>First 24 hours:</span>
+                                        <div class="text-xs opacity-70">Limited time only</div>
+                                    </div>
+                                    <span class="font-bold text-primary-500">+30% Bonus</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-secondary-700 rounded-lg">
+                                    <div>
+                                        <span>Week 1:</span>
+                                        <div class="text-xs opacity-70">Ends in 3 days</div>
+                                    </div>
+                                    <span class="font-bold text-primary-500">+20% Bonus</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-secondary-700 rounded-lg">
+                                    <span>Week 2:</span>
+                                    <span class="font-bold text-primary-500">+15% Bonus</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-secondary-700 rounded-lg">
+                                    <span>Final week:</span>
+                                    <span class="font-bold text-primary-500">+10% Bonus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-secondary-800 p-8 rounded-xl">
+                        <div class="text-center mb-6">
+                            <div class="inline-block bg-primary-500 px-4 py-1 rounded-full mb-2">
+                                <span>Special Presale Pricing</span>
+                            </div>
+                            <h3 class="text-xl font-semibold">Buy Tokens</h3>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block mb-2">Investment Amount (USD)</label>
+                                <div class="relative">
+                                    <input type="number" min="10" value="100" class="w-full p-4 bg-secondary-700 border border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="$10 minimum" id="investmentAmount">
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                                        <i class="fas fa-dollar-sign text-primary-500"></i>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between mt-2 text-sm opacity-80">
+                                    <span>Min: $10</span>
+                                    <span>Max: $5,000</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-2">You Receive (GRT)</label>
+                                <div class="relative">
+                                    <input type="text" class="w-full p-4 bg-secondary-700 border border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" readonly id="tokensReceived" value="108.33 GRT">
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                                        <i class="fas fa-coins text-primary-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-700 p-4 rounded-lg">
+                                <div class="flex justify-between mb-1">
+                                    <span>Token Price:</span>
+                                    <span>$1.20</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Estimated Gas Fee:</span>
+                                    <span class="text-primary-500">$5-10</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Bonus Tokens:</span>
+                                    <span class="text-primary-500">+30% (Limited Time)</span>
+                                </div>
+                            </div>
+                            <button id="buyTokensBtn" class="w-full gold-gradient text-secondary-900 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                                <i class="fas fa-lock"></i> Buy Tokens Securely
+                            </button>
+                            <div class="text-center text-sm opacity-80 mt-4">
+                                By purchasing, you agree to our <a href="#" class="text-primary-500 hover:underline">Terms of Service</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <button type="button" class="buy-btn" id="buyBtn">
-                    <i class="fas fa-coins"></i> Buy $GOLDR Tokens
-                </button>
-                
-                <div class="transaction-status" id="transactionStatus">
-                    <i class="fas fa-spinner fa-spin"></i> Processing transaction...
-                </div>
-            </form>
-        </div>
-        
-        <div class="presale-info">
-            <div class="info-item">
-                <div class="info-label">Token Address (Base)</div>
-                <div class="info-value">0x1234...5678</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Token Address (Ethereum)</div>
-                <div class="info-value">0xEeee...EEeE</div>
             </div>
         </div>
     </section>
 
-    <!-- Tokenomics Section -->
-    <section class="tokenomics" id="tokenomics">
-        <div class="container">
-            <h2 class="section-title">Tokenomics</h2>
-            
-            <div class="tokenomics-grid">
-                <div class="tokenomics-card">
-                    <div class="tokenomics-icon">
-                        <i class="fas fa-chart-pie"></i>
+    <!-- FAQ -->
+    <section id="faq" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="max-w-2xl mx-auto opacity-80">Find answers to common questions about GRT</p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item bg-secondary-800 rounded-xl overflow-hidden animate-fade-in animate-delay-1">
+                    <div class="faq-question p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">Why have you lowered prices and fees?</h3>
+                        <i class="fas fa-chevron-down text-primary-500"></i>
                     </div>
-                    <h3>Token Distribution</h3>
-                    <p>1 Billion tokens minted at launch with transparent allocation to presale, liquidity, team, and reserves.</p>
+                    <div class="faq-answer">
+                        <div class="p-6 pt-0">
+                            <p>We want to make gold investment accessible to everyone. By optimizing our contracts and securing better vaulting agreements, we've reduced costs significantly. These savings are passed directly to our investors through lower token prices and reduced transaction fees.</p>
+                            <div class="bg-green-900/20 p-4 rounded-lg mt-3 border border-green-700">
+                                <i class="fas fa-badge-percent text-green-500 mr-2"></i>
+                                <span class="font-semibold">Result:</span> 75% lower fees and $10 minimum investment
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="tokenomics-card">
-                    <div class="tokenomics-icon">
-                        <i class="fas fa-fire"></i>
+                <div class="faq-item bg-secondary-800 rounded-xl overflow-hidden animate-fade-in animate-delay-2">
+                    <div class="faq-question p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">What's the minimum investment?</h3>
+                        <i class="fas fa-chevron-down text-primary-500"></i>
                     </div>
-                    <h3>Deflationary Model</h3>
-                    <p>2% automatic token burn on every sell transaction, creating scarcity and increasing token value over time.</p>
+                    <div class="faq-answer">
+                        <div class="p-6 pt-0">
+                            <p>You can now start investing with as little as $10. This gets you approximately 8 GRT tokens after bonuses (at current pricing). We've eliminated the previous $50 minimum to make gold investment truly accessible.</p>
+                            <div class="value-badge mt-3">$10 minimum investment</div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="tokenomics-card">
-                    <div class="tokenomics-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="faq-item bg-secondary-800 rounded-xl overflow-hidden animate-fade-in animate-delay-3">
+                    <div class="faq-question p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">How much are gas fees now?</h3>
+                        <i class="fas fa-chevron-down text-primary-500"></i>
                     </div>
-                    <h3>Gold Backing</h3>
-                    <p>5% of all sell transactions allocated to physical gold reserves, providing tangible asset backing.</p>
+                    <div class="faq-answer">
+                        <div class="p-6 pt-0">
+                            <p>Through contract optimizations, we've reduced gas fees by approximately 65%. Current fees range between $5-10 depending on network conditions, down from $15-30 for similar transactions.</p>
+                            <div class="flex mt-3 gap-2">
+                                <div class="bg-red-900/30 p-2 rounded flex-1 text-center">
+                                    <div class="text-sm opacity-80">Old Fees</div>
+                                    <div class="font-bold text-red-400">$15-30</div>
+                                </div>
+                                <div class="bg-green-900/30 p-2 rounded flex-1 text-center">
+                                    <div class="text-sm opacity-80">New Fees</div>
+                                    <div class="font-bold text-green-400">$5-10</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="tokenomics-card">
-                    <div class="tokenomics-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
+                <div class="faq-item bg-secondary-800 rounded-xl overflow-hidden animate-fade-in">
+                    <div class="faq-question p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">Will token prices increase after presale?</h3>
+                        <i class="fas fa-chevron-down text-primary-500"></i>
                     </div>
-                    <h3>Zero Buy Tax</h3>
-                    <p>No tax on purchase transactions, making it cost-effective to acquire $GOLDR tokens.</p>
+                    <div class="faq-answer">
+                        <div class="p-6 pt-0">
+                            <p>Yes. The presale price is 40% below our planned public launch price of $2.00 per token. Additionally, the bonus tokens are only available during presale, making this the most cost-effective time to invest.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item bg-secondary-800 rounded-xl overflow-hidden animate-fade-in animate-delay-1">
+                    <div class="faq-question p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">How is my gold secured?</h3>
+                        <i class="fas fa-chevron-down text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="p-6 pt-0">
+                            <p>Physical gold backing your tokens is stored in Class III vaults operated by Brink's, Loomis, and Malca-Amit. These facilities feature 24/7 monitoring, biometric access controls, and are fully insured against theft and damage.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Token Contract Section -->
-    <section class="contract-section" id="contract">
-        <h2 class="section-title">Token Contract</h2>
-        
-        <p style="text-align: center; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
-            Manage your $GOLDR tokens directly through our secure smart contract interface
-        </p>
-        
-        <div class="contract-details">
-            <div class="contract-info">
-                <div class="info-item">
-                    <div class="info-label">Token Name</div>
-                    <div class="info-value">Gold Reserve Token</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Symbol</div>
-                    <div class="info-value">$GOLDR</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Total Supply</div>
-                    <div class="info-value">1,000,000,000</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Decimals</div>
-                    <div class="info-value">18</div>
-                </div>
-            </div>
-            
-            <div class="contract-actions">
-                <button class="action-btn" id="viewContractBtn">
-                    <i class="fas fa-external-link-alt"></i> View on Basescan
-                </button>
-                <button class="action-btn" id="copyContractBtn">
-                    <i class="fas fa-copy"></i> Copy Contract Address
-                </button>
-                <button class="action-btn" id="addToWalletBtn">
-                    <i class="fas fa-wallet"></i> Add to Wallet
-                </button>
-            </div>
-        </div>
-        
-        <div class="presale-box" style="margin-top: 2rem;">
-            <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">Token Contract Functions</h3>
-            
-            <div class="contract-info">
-                <div class="info-item">
-                    <div class="info-label">Buy Tax</div>
-                    <div class="info-value">0%</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Sell Tax</div>
-                    <div class="info-value">7% (2% burn + 5% reserve)</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Reserve Wallet</div>
-                    <div class="info-value">0xReserve...Wallet</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Liquidity Pool</div>
-                    <div class="info-value">Locked for 2 years</div>
+
+    <!-- CTA -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-12 text-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Start Your Gold Investment Journey Today</h2>
+                    <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of investors securing their wealth with gold-backed crypto at our most affordable prices ever.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#presale" class="inline-block bg-white text-secondary-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-gem mr-2"></i> Join Presale - From $10
+                        </a>
+                        <a href="#investment" class="inline-block border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-secondary-900 transition-colors">
+                            <i class="fas fa-chart-line mr-2"></i> View Investment Plans
+                        </a>
+                    </div>
+                    <div class="mt-8 flex flex-wrap justify-center gap-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span>Minimum investment: $10</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span>Gas fees: $5-10</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span>75% lower fees</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-coins"></i>
+    <footer class="bg-secondary-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-primary-500 p-2 rounded-full">
+                            <i class="fas fa-coins text-secondary-900"></i>
                         </div>
-                        <div class="logo-text">$GOLDR</div>
+                        <h3 class="text-xl font-bold font-display">GOLD RESERVE TOKEN</h3>
                     </div>
-                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.7);">
-                        Gold Reserve Token combines blockchain innovation with the timeless value of gold, creating a new standard for asset-backed cryptocurrencies.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <div class="footer-links">
-                        <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
-                        <a href="#presale"><i class="fas fa-chevron-right"></i> Presale</a>
-                        <a href="#tokenomics"><i class="fas fa-chevron-right"></i> Tokenomics</a>
-                        <a href="#contract"><i class="fas fa-chevron-right"></i> Token Contract</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Whitepaper</a>
+                    <p class="opacity-80 mb-4">Making gold investment accessible and affordable through blockchain technology.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="bg-secondary-800 p-2 rounded-full hover:bg-primary-500 transition-colors">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="bg-secondary-800 p-2 rounded-full hover:bg-primary-500 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-secondary-800 p-2 rounded-full hover:bg-primary-500 transition-colors">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="bg-secondary-800 p-2 rounded-full hover:bg-primary-500 transition-colors">
+                            <i class="fab fa-medium"></i>
+                        </a>
                     </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h3>Resources</h3>
-                    <div class="footer-links">
-                        <a href="#"><i class="fas fa-chevron-right"></i> Documentation</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> GitHub Repository</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Base Network</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Etherscan</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Basescan</a>
-                    </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#presale" class="opacity-80 hover:text-primary-500 transition-colors">Presale</a></li>
+                        <li><a href="#investment" class="opacity-80 hover:text-primary-500 transition-colors">Investment Plans</a></li>
+                        <li><a href="#benefits" class="opacity-80 hover:text-primary-500 transition-colors">Benefits</a></li>
+                        <li><a href="#security" class="opacity-80 hover:text-primary-500 transition-colors">Security</a></li>
+                        <li><a href="#faq" class="opacity-80 hover:text-primary-500 transition-colors">FAQ</a></li>
+                    </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h3>Legal</h3>
-                    <div class="footer-links">
-                        <a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Disclaimer</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Risk Disclosure</a>
-                    </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="opacity-80 hover:text-primary-500 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-primary-500 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-primary-500 transition-colors">Disclaimer</a></li>
+                        <li><a href="#" class="opacity-80 hover:text-primary-500 transition-colors">Audit Reports</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-envelope text-primary-500 mt-1"></i>
+                            <a href="mailto:contact@goldreservetoken.io" class="opacity-80 hover:text-primary-500 transition-colors">contact@goldreservetoken.io</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fab fa-telegram text-primary-500 mt-1"></i>
+                            <a href="https://t.me/GoldReserveToken" class="opacity-80 hover:text-primary-500 transition-colors">t.me/GoldReserveToken</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fab fa-twitter text-primary-500 mt-1"></i>
+                            <a href="https://x.com/GoldReserveToken" class="opacity-80 hover:text-primary-500 transition-colors">@GoldReserveToken</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="copyright">
-                &copy; 2023 Gold Reserve Token. All rights reserved. This is not an investment advice. Cryptocurrencies are volatile assets; do your own research.
+            <div class="mt-12 pt-8 border-t border-secondary-700 text-center">
+                <p class="opacity-70">© 2024 Gold Reserve Token. All rights reserved.</p>
+                <p class="text-sm opacity-60 mt-2">This website is for demonstration purposes only. Cryptocurrency investments are volatile and high risk. Always do your own research.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Token balance display -->
+    <div class="token-balance" id="tokenBalance">
+        <span class="close-balance" id="closeBalance"><i class="fas fa-times"></i></span>
+        <div class="token-balance-header">
+            <div class="token-balance-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <h4>Your GRT Balance</h4>
+        </div>
+        <div class="token-balance-value" id="balanceValue">0.00</div>
+        <div class="token-balance-label">GRT Tokens</div>
+    </div>
+
+    <!-- Purchase Modal -->
+    <div class="purchase-modal" id="purchaseModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal"><i class="fas fa-times"></i></span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3 class="text-xl font-semibold">Confirm Token Purchase</h3>
+            </div>
+            
+            <div class="modal-details">
+                <div class="modal-detail">
+                    <span>Amount:</span>
+                    <span id="modalAmount">$0.00</span>
+                </div>
+                <div class="modal-detail">
+                    <span>Tokens:</span>
+                    <span id="modalTokens">0.00 GRT</span>
+                </div>
+                <div class="modal-detail">
+                    <span>Gas Fee:</span>
+                    <span id="modalGasFee">$0.00</span>
+                </div>
+                <div class="modal-detail">
+                    <span>Bonus:</span>
+                    <span id="modalBonus">0.00 GRT</span>
+                </div>
+                <div class="modal-detail font-bold">
+                    <span>Total Tokens:</span>
+                    <span id="modalTotalTokens">0.00 GRT</span>
+                </div>
+            </div>
+            
+            <button class="modal-button" id="confirmPurchase">Confirm Purchase</button>
+            <button class="modal-button bg-secondary-700 text-white hover:bg-secondary-600" id="cancelPurchase">Cancel</button>
+        </div>
+    </div>
+
     <script>
-        // DOM elements
-        const header = document.getElementById('header');
-        const backToTopBtn = document.querySelector('.back-to-top');
-        const connectWalletBtn = document.getElementById('connectWalletBtn');
-        const ethInput = document.getElementById('eth-amount');
-        const goldrOutput = document.getElementById('goldr-amount');
-        const maxBtn = document.getElementById('maxBtn');
-        const buyBtn = document.getElementById('buyBtn');
-        const transactionStatus = document.getElementById('transactionStatus');
-        const progressFill = document.getElementById('progressFill');
-        const viewContractBtn = document.getElementById('viewContractBtn');
-        const copyContractBtn = document.getElementById('copyContractBtn');
-        const addToWalletBtn = document.getElementById('addToWalletBtn');
+        // User wallet and token state
+        let userWalletConnected = false;
+        let userTokenBalance = 0;
+        let currentPurchase = {
+            amount: 0,
+            tokens: 0,
+            bonus: 0,
+            gasFee: 0
+        };
+
+        // DOM Elements
+        const connectWalletBtn = document.getElementById('connectWallet');
+        const walletText = document.getElementById('walletText');
+        const tokenBalance = document.getElementById('tokenBalance');
+        const balanceValue = document.getElementById('balanceValue');
+        const closeBalance = document.getElementById('closeBalance');
+        const buyTokensBtn = document.getElementById('buyTokensBtn');
+        const investmentAmount = document.getElementById('investmentAmount');
+        const tokensReceived = document.getElementById('tokensReceived');
+        const purchaseModal = document.getElementById('purchaseModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelPurchase = document.getElementById('cancelPurchase');
+        const confirmPurchase = document.getElementById('confirmPurchase');
+        const modalAmount = document.getElementById('modalAmount');
+        const modalTokens = document.getElementById('modalTokens');
+        const modalGasFee = document.getElementById('modalGasFee');
+        const modalBonus = document.getElementById('modalBonus');
+        const modalTotalTokens = document.getElementById('modalTotalTokens');
+        const investmentButtons = document.querySelectorAll('.investment-btn');
         
-        // Constants
-        const tokenRate = 50000; // 1 ETH = 50,000 $GOLDR
-        const totalRaised = 325; // ETH
-        const hardcap = 500; // ETH
-        const progressPercentage = (totalRaised / hardcap) * 100;
-        const tokenContractAddress = "0x1234567890abcdef1234567890abcdef12345678";
-        
-        // Set initial progress bar width
-        progressFill.style.width = `${progressPercentage}%`;
-        
-        // Countdown Timer
-        function updateCountdown() {
-            const now = new Date();
-            const presaleEnd = new Date(now);
-            presaleEnd.setDate(now.getDate() + 14);
-            
-            const diff = presaleEnd - now;
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-        
-        // ETH to GOLDR conversion
-        ethInput.addEventListener('input', () => {
-            const ethValue = parseFloat(ethInput.value) || 0;
-            const goldrValue = ethValue * tokenRate;
-            goldrOutput.value = ethValue > 0 ? goldrValue.toLocaleString() + ' $GOLDR' : '0 $GOLDR';
-        });
-        
-        // MAX button
-        maxBtn.addEventListener('click', () => {
-            ethInput.value = '10';
-            const goldrValue = 10 * tokenRate;
-            goldrOutput.value = goldrValue.toLocaleString() + ' $GOLDR';
-        });
-        
-        // Buy button
-        buyBtn.addEventListener('click', () => {
-            const ethAmount = parseFloat(ethInput.value);
-            
-            if (!ethAmount || ethAmount <= 0) {
-                showTransactionStatus('Please enter a valid amount of ETH', 'error');
-                return;
-            }
-            
-            if (ethAmount > 10) {
-                showTransactionStatus('Maximum purchase per transaction is 10 ETH', 'error');
-                return;
-            }
-            
-            showTransactionStatus('Processing transaction...', 'processing');
-            
-            // Simulate transaction delay
-            setTimeout(() => {
-                const goldrAmount = ethAmount * tokenRate;
-                showTransactionStatus(
-                    `Success! You've purchased ${goldrAmount.toLocaleString()} $GOLDR tokens`,
-                    'success'
-                );
-                
-                // Update progress bar
-                const newRaised = totalRaised + ethAmount;
-                const newPercentage = (newRaised / hardcap) * 100;
-                progressFill.style.width = `${Math.min(newPercentage, 100)}%`;
-                
-                // Reset form after success
-                setTimeout(() => {
-                    ethInput.value = '';
-                    goldrOutput.value = '';
-                    transactionStatus.style.display = 'none';
-                }, 5000);
-            }, 3000);
-        });
-        
-        // Transaction status handler
-        function showTransactionStatus(message, type) {
-            transactionStatus.innerHTML = message;
-            transactionStatus.className = 'transaction-status';
-            
-            if (type === 'processing') {
-                transactionStatus.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${message}`;
-                transactionStatus.classList.add('transaction-processing');
-            } 
-            else if (type === 'success') {
-                transactionStatus.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-                transactionStatus.classList.add('transaction-success');
-            } 
-            else if (type === 'error') {
-                transactionStatus.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-                transactionStatus.classList.add('transaction-error');
-            }
-            
-            transactionStatus.style.display = 'block';
-        }
-        
-        // Connect Wallet
-        connectWalletBtn.addEventListener('click', () => {
-            if (!connectWalletBtn.classList.contains('wallet-connected')) {
-                connectWalletBtn.innerHTML = '<i class="fas fa-check"></i> Wallet Connected';
+        // Wallet connection functionality
+        connectWalletBtn.addEventListener('click', function() {
+            if (!userWalletConnected) {
+                // Simulate wallet connection
+                walletText.textContent = "0x742d...f44e";
                 connectWalletBtn.classList.add('wallet-connected');
+                userWalletConnected = true;
                 
-                // Show success message
-                showTransactionStatus('Wallet connected successfully!', 'success');
+                // Show notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg';
+                notification.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Wallet connected successfully!';
+                document.body.appendChild(notification);
+                
+                // Show token balance
+                tokenBalance.style.display = 'block';
+                
                 setTimeout(() => {
-                    transactionStatus.style.display = 'none';
+                    notification.remove();
+                }, 3000);
+            } else {
+                // Simulate disconnecting wallet
+                walletText.textContent = "Connect Wallet";
+                connectWalletBtn.classList.remove('wallet-connected');
+                userWalletConnected = false;
+                
+                // Hide token balance
+                tokenBalance.style.display = 'none';
+                
+                // Show notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed bottom-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg';
+                notification.innerHTML = '<i class="fas fa-info-circle mr-2"></i> Wallet disconnected';
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
                 }, 3000);
             }
         });
         
-        // Contract Actions
-        viewContractBtn.addEventListener('click', () => {
-            showTransactionStatus('Redirecting to Basescan...', 'processing');
-            setTimeout(() => {
-                showTransactionStatus('Please check your browser for popup blocker', 'success');
-                setTimeout(() => {
-                    transactionStatus.style.display = 'none';
-                }, 3000);
-            }, 1000);
+        // Close token balance
+        closeBalance.addEventListener('click', function() {
+            tokenBalance.style.display = 'none';
         });
         
-        copyContractBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(tokenContractAddress);
-            showTransactionStatus('Contract address copied to clipboard!', 'success');
-            setTimeout(() => {
-                transactionStatus.style.display = 'none';
-            }, 3000);
-        });
+        // Token calculator
+        function calculateTokens(amount) {
+            const tokenPrice = 1.20; // $1.20 per token
+            const bonusRate = 0.30; // 30% bonus
+            const baseTokens = amount / tokenPrice;
+            const bonusTokens = baseTokens * bonusRate;
+            const totalTokens = baseTokens + bonusTokens;
+            
+            // Calculate random gas fee between $5-10
+            const gasFee = (5 + Math.random() * 5).toFixed(2);
+            
+            return {
+                baseTokens: baseTokens,
+                bonusTokens: bonusTokens,
+                totalTokens: totalTokens,
+                gasFee: gasFee
+            };
+        }
         
-        addToWalletBtn.addEventListener('click', () => {
-            showTransactionStatus('Adding $GOLDR to your wallet...', 'processing');
-            setTimeout(() => {
-                showTransactionStatus('Token added successfully!', 'success');
-                setTimeout(() => {
-                    transactionStatus.style.display = 'none';
-                }, 3000);
-            }, 2000);
-        });
-        
-        // Scroll header effect
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+        // Update token display when investment amount changes
+        investmentAmount.addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            
+            if (amount >= 10 && amount <= 5000) {
+                const result = calculateTokens(amount);
+                tokensReceived.value = result.totalTokens.toFixed(2) + ' GRT';
+            } else if (amount < 10) {
+                tokensReceived.value = 'Minimum $10 investment';
             } else {
-                header.classList.remove('scrolled');
+                tokensReceived.value = 'Maximum $5,000 investment';
+            }
+        });
+        
+        // Buy tokens button handler
+        buyTokensBtn.addEventListener('click', function() {
+            if (!userWalletConnected) {
+                // Show error notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed bottom-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg';
+                notification.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Please connect your wallet first!';
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+                return;
             }
             
-            // Show/hide back to top button
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
+            const amount = parseFloat(investmentAmount.value) || 0;
+            
+            if (amount < 10) {
+                alert('Minimum investment is $10');
+                return;
             }
+            
+            if (amount > 5000) {
+                alert('Maximum investment is $5000');
+                return;
+            }
+            
+            // Calculate tokens
+            const result = calculateTokens(amount);
+            
+            // Set current purchase
+            currentPurchase = {
+                amount: amount,
+                tokens: result.baseTokens,
+                bonus: result.bonusTokens,
+                gasFee: result.gasFee,
+                totalTokens: result.totalTokens
+            };
+            
+            // Update modal
+            modalAmount.textContent = `$${amount.toFixed(2)}`;
+            modalTokens.textContent = `${result.baseTokens.toFixed(2)} GRT`;
+            modalGasFee.textContent = `$${result.gasFee}`;
+            modalBonus.textContent = `${result.bonusTokens.toFixed(2)} GRT (+30%)`;
+            modalTotalTokens.textContent = `${result.totalTokens.toFixed(2)} GRT`;
+            
+            // Show modal
+            purchaseModal.classList.add('active');
         });
         
-        // Back to top button
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+        // Investment plan buttons
+        investmentButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (!userWalletConnected) {
+                    // Show error notification
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed bottom-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg';
+                    notification.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Please connect your wallet first!';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                    return;
                 }
+                
+                const tier = this.dataset.tier;
+                let amount = 0;
+                
+                // Set investment amount based on tier
+                if (tier === 'starter') amount = 25;
+                else if (tier === 'silver') amount = 100;
+                else if (tier === 'gold') amount = 250;
+                
+                // Calculate tokens
+                const result = calculateTokens(amount);
+                
+                // Set current purchase
+                currentPurchase = {
+                    amount: amount,
+                    tokens: result.baseTokens,
+                    bonus: result.bonusTokens,
+                    gasFee: result.gasFee,
+                    totalTokens: result.totalTokens
+                };
+                
+                // Update modal
+                modalAmount.textContent = `$${amount.toFixed(2)}`;
+                modalTokens.textContent = `${result.baseTokens.toFixed(2)} GRT`;
+                modalGasFee.textContent = `$${result.gasFee}`;
+                modalBonus.textContent = `${result.bonusTokens.toFixed(2)} GRT (+30%)`;
+                modalTotalTokens.textContent = `${result.totalTokens.toFixed(2)} GRT`;
+                
+                // Show modal
+                purchaseModal.classList.add('active');
             });
         });
         
-        // Initialize form
-        ethInput.value = '';
-        goldrOutput.value = '';
+        // Modal close handlers
+        closeModal.addEventListener('click', function() {
+            purchaseModal.classList.remove('active');
+        });
+        
+        cancelPurchase.addEventListener('click', function() {
+            purchaseModal.classList.remove('active');
+        });
+        
+        // Confirm purchase handler
+        confirmPurchase.addEventListener('click', function() {
+            // Add tokens to user balance
+            userTokenBalance += currentPurchase.totalTokens;
+            balanceValue.textContent = userTokenBalance.toFixed(2);
+            
+            // Hide modal
+            purchaseModal.classList.remove('active');
+            
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg';
+            notification.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Success! ${currentPurchase.totalTokens.toFixed(2)} GRT added to your wallet`;
+            document.body.appendChild(notification);
+            
+            // Show token balance if hidden
+            tokenBalance.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        });
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                faqItem.classList.toggle('active');
+                
+                // Rotate icon
+                const icon = question.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+        
+        // Update presale progress
+        function updateProgressBar() {
+            const progressBar = document.getElementById('presaleProgress');
+            let progress = 72;
+            
+            // Simulate progress increase
+            setInterval(() => {
+                if (progress < 100) {
+                    progress += 0.1;
+                    progressBar.style.width = progress + '%';
+                }
+            }, 5000);
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            
+            // Set target date (7 days from now)
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
+            
+            function update() {
+                const now = new Date();
+                const diff = targetDate - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                daysEl.textContent = days.toString().padStart(2, '0');
+                hoursEl.textContent = hours.toString().padStart(2, '0');
+                minutesEl.textContent = minutes.toString().padStart(2, '0');
+                secondsEl.textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+        
+        // Initialize functions
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            updateCountdown();
+        });
     </script>
 </body>
 </html>
