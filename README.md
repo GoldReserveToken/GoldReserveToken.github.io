@@ -563,6 +563,72 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
+        /* Token Contract Section */
+        .contract-section {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 5rem auto;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contract-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        .contract-details {
+            background: rgba(18, 18, 18, 0.6);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .contract-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contract-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .action-btn {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .action-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
         /* Footer */
         footer {
             background: rgba(18, 18, 18, 0.9);
@@ -687,7 +753,7 @@
                 font-size: 3rem;
             }
             
-            .presale-info {
+            .presale-info, .contract-info {
                 grid-template-columns: 1fr;
             }
         }
@@ -718,7 +784,7 @@
                 font-size: 2rem;
             }
             
-            .presale-section {
+            .presale-section, .contract-section {
                 padding: 2rem;
             }
             
@@ -780,7 +846,7 @@
                     <a href="#home"><i class="fas fa-home"></i> Home</a>
                     <a href="#presale"><i class="fas fa-gem"></i> Presale</a>
                     <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
-                    <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="#contract"><i class="fas fa-file-contract"></i> Token</a>
                 </nav>
                 <button class="connect-wallet-btn" id="connectWalletBtn">
                     <i class="fas fa-wallet"></i> Connect Wallet
@@ -934,6 +1000,71 @@
             </div>
         </div>
     </section>
+    
+    <!-- Token Contract Section -->
+    <section class="contract-section" id="contract">
+        <h2 class="section-title">Token Contract</h2>
+        
+        <p style="text-align: center; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
+            Manage your $GOLDR tokens directly through our secure smart contract interface
+        </p>
+        
+        <div class="contract-details">
+            <div class="contract-info">
+                <div class="info-item">
+                    <div class="info-label">Token Name</div>
+                    <div class="info-value">Gold Reserve Token</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Symbol</div>
+                    <div class="info-value">$GOLDR</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Total Supply</div>
+                    <div class="info-value">1,000,000,000</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Decimals</div>
+                    <div class="info-value">18</div>
+                </div>
+            </div>
+            
+            <div class="contract-actions">
+                <button class="action-btn" id="viewContractBtn">
+                    <i class="fas fa-external-link-alt"></i> View on Basescan
+                </button>
+                <button class="action-btn" id="copyContractBtn">
+                    <i class="fas fa-copy"></i> Copy Contract Address
+                </button>
+                <button class="action-btn" id="addToWalletBtn">
+                    <i class="fas fa-wallet"></i> Add to Wallet
+                </button>
+            </div>
+        </div>
+        
+        <div class="presale-box" style="margin-top: 2rem;">
+            <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">Token Contract Functions</h3>
+            
+            <div class="contract-info">
+                <div class="info-item">
+                    <div class="info-label">Buy Tax</div>
+                    <div class="info-value">0%</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Sell Tax</div>
+                    <div class="info-value">7% (2% burn + 5% reserve)</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Reserve Wallet</div>
+                    <div class="info-value">0xReserve...Wallet</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Liquidity Pool</div>
+                    <div class="info-value">Locked for 2 years</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -963,8 +1094,8 @@
                         <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
                         <a href="#presale"><i class="fas fa-chevron-right"></i> Presale</a>
                         <a href="#tokenomics"><i class="fas fa-chevron-right"></i> Tokenomics</a>
+                        <a href="#contract"><i class="fas fa-chevron-right"></i> Token Contract</a>
                         <a href="#"><i class="fas fa-chevron-right"></i> Whitepaper</a>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Audit Report</a>
                     </div>
                 </div>
                 
@@ -1007,12 +1138,16 @@
         const buyBtn = document.getElementById('buyBtn');
         const transactionStatus = document.getElementById('transactionStatus');
         const progressFill = document.getElementById('progressFill');
+        const viewContractBtn = document.getElementById('viewContractBtn');
+        const copyContractBtn = document.getElementById('copyContractBtn');
+        const addToWalletBtn = document.getElementById('addToWalletBtn');
         
         // Constants
         const tokenRate = 50000; // 1 ETH = 50,000 $GOLDR
         const totalRaised = 325; // ETH
         const hardcap = 500; // ETH
         const progressPercentage = (totalRaised / hardcap) * 100;
+        const tokenContractAddress = "0x1234567890abcdef1234567890abcdef12345678";
         
         // Set initial progress bar width
         progressFill.style.width = `${progressPercentage}%`;
@@ -1077,6 +1212,11 @@
                     'success'
                 );
                 
+                // Update progress bar
+                const newRaised = totalRaised + ethAmount;
+                const newPercentage = (newRaised / hardcap) * 100;
+                progressFill.style.width = `${Math.min(newPercentage, 100)}%`;
+                
                 // Reset form after success
                 setTimeout(() => {
                     ethInput.value = '';
@@ -1119,6 +1259,35 @@
                     transactionStatus.style.display = 'none';
                 }, 3000);
             }
+        });
+        
+        // Contract Actions
+        viewContractBtn.addEventListener('click', () => {
+            showTransactionStatus('Redirecting to Basescan...', 'processing');
+            setTimeout(() => {
+                showTransactionStatus('Please check your browser for popup blocker', 'success');
+                setTimeout(() => {
+                    transactionStatus.style.display = 'none';
+                }, 3000);
+            }, 1000);
+        });
+        
+        copyContractBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(tokenContractAddress);
+            showTransactionStatus('Contract address copied to clipboard!', 'success');
+            setTimeout(() => {
+                transactionStatus.style.display = 'none';
+            }, 3000);
+        });
+        
+        addToWalletBtn.addEventListener('click', () => {
+            showTransactionStatus('Adding $GOLDR to your wallet...', 'processing');
+            setTimeout(() => {
+                showTransactionStatus('Token added successfully!', 'success');
+                setTimeout(() => {
+                    transactionStatus.style.display = 'none';
+                }, 3000);
+            }, 2000);
         });
         
         // Scroll header effect
