@@ -15,6 +15,7 @@
             --light-gold: #F5E7C1;
             --medium-gold: #E6C35C;
             --rich-black: #050A14;
+            --presale-highlight: #ffd700;
         }
         
         * {
@@ -50,6 +51,11 @@
         .gold-text {
             color: var(--gold);
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .presale-highlight {
+            color: var(--presale-highlight);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
         }
         
         .container {
@@ -189,6 +195,25 @@
         
         .btn-outline:hover {
             background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .btn-presale {
+            background: linear-gradient(135deg, var(--presale-highlight), #daa520);
+            color: var(--rich-black);
+            font-weight: 700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .btn-presale:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.6); }
+            100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
         }
         
         /* Hero Section */
@@ -357,9 +382,29 @@
             color: var(--gold);
         }
         
-        /* Features Section */
-        .features {
+        /* Presale Section */
+        .presale {
             padding: 120px 0;
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 15, 31, 0.9), rgba(20, 15, 5, 0.9));
+            overflow: hidden;
+        }
+        
+        .presale::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/0j7WwYk/404-token.gif') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .presale-container {
+            position: relative;
+            z-index: 1;
         }
         
         .section-header {
@@ -393,6 +438,208 @@
             max-width: 700px;
             margin: 30px auto 0;
             line-height: 1.6;
+        }
+        
+        .presale-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .presale-countdown {
+            flex: 1;
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .presale-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .timer-unit {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 100px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .timer-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--presale-highlight);
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .timer-label {
+            color: var(--light-gold);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .presale-progress {
+            background: rgba(10, 15, 31, 0.8);
+            border-radius: 30px;
+            height: 20px;
+            overflow: hidden;
+            margin: 30px 0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dark-gold), var(--presale-highlight));
+            width: 42%;
+            border-radius: 30px;
+            position: relative;
+            transition: width 1s ease;
+        }
+        
+        .progress-bar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .progress-raised {
+            color: var(--presale-highlight);
+            font-weight: 600;
+        }
+        
+        .presale-form {
+            flex: 1;
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .presale-form h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--presale-highlight);
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--light-gold);
+        }
+        
+        .input-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(10, 15, 31, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .input-control:focus {
+            outline: none;
+            border-color: var(--presale-highlight);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .token-info {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .token-amount {
+            color: var(--presale-highlight);
+            font-weight: 700;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        
+        .presale-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .detail-card {
+            background: rgba(10, 15, 31, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .detail-card h4 {
+            color: var(--light-gold);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .detail-card p {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--presale-highlight);
+        }
+        
+        .presale-notes {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--presale-highlight);
+        }
+        
+        .presale-notes ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .presale-notes li {
+            margin-bottom: 10px;
+            color: var(--light-gold);
+        }
+        
+        .presale-notes li::marker {
+            color: var(--presale-highlight);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 120px 0;
         }
         
         .features-grid {
@@ -929,6 +1176,10 @@
                 justify-content: center;
             }
             
+            .presale-content {
+                flex-direction: column;
+            }
+            
             .tokenomics-content {
                 flex-direction: column;
             }
@@ -967,6 +1218,19 @@
             .hero-image {
                 margin-top: 50px;
             }
+            
+            .presale-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-unit {
+                min-width: 70px;
+                padding: 15px;
+            }
+            
+            .timer-value {
+                font-size: 32px;
+            }
         }
         
         /* Animations */
@@ -997,6 +1261,7 @@
             <nav>
                 <ul>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#presale">Presale</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#tokenomics">Tokenomics</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
@@ -1004,7 +1269,7 @@
                 </ul>
             </nav>
             <div class="nav-buttons">
-                <a href="#" class="btn btn-gold">Buy $GOLDR</a>
+                <a href="#presale" class="btn btn-presale">Join Presale</a>
                 <a href="#" class="btn btn-outline">Whitepaper</a>
             </div>
         </div>
@@ -1019,7 +1284,7 @@
                     <h1>Exposing Fiat Gold Manipulation with <span class="gold-text">Blockchain</span></h1>
                     <p>$GOLDR combines the stability of physical gold with the innovation of cryptocurrency. Each token is backed by verifiable gold reserves stored in audited vaults worldwide.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-gold"><i class="fas fa-coins"></i> Buy $GOLDR</a>
+                        <a href="#presale" class="btn btn-presale"><i class="fas fa-coins"></i> Join Presale</a>
                         <a href="#" class="btn btn-outline"><i class="fas fa-chart-line"></i> View Chart</a>
                     </div>
                     <div class="contract-address" id="contractAddress">
@@ -1033,6 +1298,97 @@
                     </div>
                     <div class="gold-bar-small gold-bar-1"></div>
                     <div class="gold-bar-small gold-bar-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presale Section -->
+    <section class="presale" id="presale">
+        <div class="container presale-container">
+            <div class="section-header">
+                <h2 class="section-title presale-highlight">$GOLDR Presale</h2>
+                <p class="section-subtitle">Get in early on the token that's revolutionizing gold ownership with exclusive presale benefits</p>
+            </div>
+            
+            <div class="presale-content">
+                <div class="presale-countdown">
+                    <h3>Presale Ends In</h3>
+                    <div class="presale-timer">
+                        <div class="timer-unit">
+                            <div class="timer-value" id="days">07</div>
+                            <div class="timer-label">Days</div>
+                        </div>
+                        <div class="timer-unit">
+                            <div class="timer-value" id="hours">15</div>
+                            <div class="timer-label">Hours</div>
+                        </div>
+                        <div class="timer-unit">
+                            <div class="timer-value" id="minutes">42</div>
+                            <div class="timer-label">Minutes</div>
+                        </div>
+                        <div class="timer-unit">
+                            <div class="timer-value" id="seconds">30</div>
+                            <div class="timer-label">Seconds</div>
+                        </div>
+                    </div>
+                    
+                    <div class="presale-progress">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    
+                    <div class="progress-info">
+                        <div class="progress-raised">1,260,000 USDT Raised</div>
+                        <div>Hard Cap: 3,000,000 USDT</div>
+                    </div>
+                    
+                    <div class="presale-notes">
+                        <h4>Presale Benefits:</h4>
+                        <ul>
+                            <li>30% bonus tokens for presale participants</li>
+                            <li>Guaranteed gold reserve backing from day one</li>
+                            <li>Exclusive access to Gold Market Prediction Game</li>
+                            <li>Priority physical redemption rights</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="presale-form">
+                    <h3>Buy $GOLDR Tokens</h3>
+                    
+                    <div class="input-group">
+                        <label for="usdtAmount">Enter USDT Amount</label>
+                        <input type="number" id="usdtAmount" class="input-control" placeholder="1000" min="100" value="1000">
+                    </div>
+                    
+                    <div class="token-info">
+                        <div>You will receive:</div>
+                        <div class="token-amount" id="tokenAmount">13,000 $GOLDR</div>
+                        <div>(1 USDT = 10 $GOLDR + 30% bonus)</div>
+                    </div>
+                    
+                    <button class="btn btn-presale" style="width: 100%; padding: 18px;">
+                        <i class="fas fa-wallet"></i> Connect Wallet to Buy
+                    </button>
+                    
+                    <div class="presale-details">
+                        <div class="detail-card">
+                            <h4>Presale Price</h4>
+                            <p>1 USDT = 10 $GOLDR</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Listing Price</h4>
+                            <p>1 USDT = 7.7 $GOLDR</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Minimum Buy</h4>
+                            <p>100 USDT</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Maximum Buy</h4>
+                            <p>50,000 USDT</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1285,7 +1641,7 @@
                 <h2>Join the Gold Revolution</h2>
                 <p>Be part of the movement that's exposing gold market manipulation while creating real, asset-backed wealth.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-gold"><i class="fas fa-coins"></i> Buy $GOLDR</a>
+                    <a href="#presale" class="btn btn-presale"><i class="fas fa-coins"></i> Join Presale</a>
                     <a href="#" class="btn btn-outline"><i class="fas fa-vault"></i> View Gold Reserves</a>
                 </div>
             </div>
@@ -1324,7 +1680,7 @@
                 <div class="footer-links">
                     <h3>Ecosystem</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-shopping-cart"></i> Buy $GOLDR</a></li>
+                        <li><a href="#presale"><i class="fas fa-shopping-cart"></i> Presale</a></li>
                         <li><a href="#"><i class="fas fa-lock"></i> Staking</a></li>
                         <li><a href="#"><i class="fas fa-gamepad"></i> Gold Game</a></li>
                         <li><a href="#"><i class="fas fa-coins"></i> NFT Collection</a></li>
@@ -1433,6 +1789,52 @@
                     headerContainer.classList.remove('scrolled');
                 }
             });
+            
+            // Presale functionality
+            // Countdown timer
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 7); // 7 days from now
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.querySelector('.presale-countdown h3').innerText = 'Presale Has Ended!';
+                    document.querySelector('.presale-timer').innerHTML = '<div class="timer-value" style="font-size: 36px; margin: 20px 0;">Presale Completed</div>';
+                }
+            }
+            
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+            
+            // Token amount calculation
+            const usdtInput = document.getElementById('usdtAmount');
+            const tokenAmount = document.getElementById('tokenAmount');
+            
+            usdtInput.addEventListener('input', function() {
+                const usdtValue = parseFloat(this.value) || 0;
+                // Presale rate: 1 USDT = 10 $GOLDR with 30% bonus
+                const tokens = usdtValue * 10 * 1.3;
+                tokenAmount.innerText = tokens.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' $GOLDR';
+            });
+            
+            // Progress bar animation
+            const progressBar = document.getElementById('progressBar');
+            setTimeout(() => {
+                progressBar.style.width = '42%';
+            }, 500);
         });
     </script>
 </body>
